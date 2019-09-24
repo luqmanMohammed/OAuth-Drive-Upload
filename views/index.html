@@ -1,16 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Logged in as {{email}}</h1>
-    <form action="/ssd/file/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="to_drive_file" id="to_drive_file"/>
-        <input type="submit" value="Upload">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Jekyll v3.8.5">
+        <title>Signin Template · Bootstrap</title>
+    
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sign-in/">
+    
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    
+        <style>
+          .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+          }
+    
+          @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+              font-size: 3.5rem;
+            }
+          }
+        </style>
+        <!-- Custom styles for this template -->
+        <link href="/static/signin.css" rel="stylesheet">
+      </head>
+  <body class="text-center">
+    <form class="form-signin" action="/ssd/file/upload" enctype="multipart/form-data">
+      <img class="mb-4" src="{{ pic_url }}" alt="" width="72" height="72" />
+      <h1 class="h2 mb-3 font-weight-normal">Logged In As</h1>
+      <h1 class="h3 mb-3 font-weight-normal">{{ name }}</h1>
+      <input
+        type="file"
+        id="to_drive_file"
+        name = "to_drive_file"
+        class="form-control mb-3"
+        required
+        autofocus
+      />
+      <button class="btn btn-lg btn-primary btn-block" type="submit">
+        Upload To Drive
+      </button>
+      <p class="mt-5 mb-3 text-muted">OAuth Google Drive File Uploader</p>
     </form>
-</body>
+  </body>
 </html>

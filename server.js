@@ -70,9 +70,11 @@ app.get("/login", (req, res) => {
 app.get("/main", checkLogin, (req, res) => {
   const session = req.session.passport.user;
   console.log(req.query);
-  
+  console.log(session);
   res.render(path.join(__dirname, "/views/index.html"), {
-    email: session.email
+    email: session.email,
+    name: session.name,
+    pic_url:session.pic_url
   });
 });
 
