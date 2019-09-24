@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+    <title>Document</title>
 </head>
 <body>
-    <a href="/ssd/auth/google">Login</a>
+    <h1>Logged in as {{email}}</h1>
+    <form action="/ssd/file/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="to_drive_file" id="to_drive_file"/>
+        <input type="submit" value="Upload">
+    </form>
 </body>
 </html>
