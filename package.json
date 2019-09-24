@@ -1,0 +1,19 @@
+{
+  "name": "oauth-node",
+  "version": "1.0.0",
+  "description": "Backend Server for OAuth SSD Assignment",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "OAuth2.0"
+  ],
+  "author": "luqmanMohammed",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^2.0.0"
+  }
+}
