@@ -6,7 +6,7 @@
         <meta name="description" content="">
         <meta name="generator" content="Jekyll v3.8.5">
         <title>Main</title>
-    
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
         <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sign-in/">
     
         <!-- Bootstrap core CSS -->
@@ -35,8 +35,12 @@
   <body class="text-center">
     <form class="form-signin" method="post" action="/ssd/file/upload" enctype="multipart/form-data">
       <img class="mb-4" src="{{ pic_url }}" alt="" width="72" height="72" />
-      <h1 class="h2 mb-3 font-weight-normal">Logged In As</h1>
-      <h1 class="h3 mb-3 font-weight-normal">{{ name }}</h1>
+      <h1 class="h4 mb-3 font-weight-normal">Logged in as User</h1>
+      <h1 class="h2 mb-3 font-weight-normal">{{ name }}</h1>
+      <p class="lead">
+            <a href="/ssd/auth/google/loggout" class="btn btn-md btn-danger">Log Out</a>
+      </p>
+      <h1 class="h3 mb-3 font-weight-normal">Select File to Upload</h1>
       <input
         type="file"
         id="to_drive_file"
@@ -50,5 +54,18 @@
       </button>
       <p class="mt-5 mb-3 text-muted">OAuth Google Drive File Uploader</p>
     </form>
+    {% if (status == "failed") %}
+        <script>Swal.fire(
+                'Failed!',
+                'Upload to Drive Failed!',
+                'error'
+              )</script>
+    {% elif (status == "success") %}
+        <script>Swal.fire(
+            'Success!',
+            'Sucessfully Uploaded!',
+            'success'
+        )</script>
+    {% endif %}
   </body>
 </html>

@@ -69,13 +69,21 @@ app.get("/login", (req, res) => {
 
 app.get("/main", checkLogin, (req, res) => {
   const session = req.session.passport.user;
-  console.log(req.query);
-  console.log(session);
-  res.render(path.join(__dirname, "/views/index.html"), {
-    email: session.email,
-    name: session.name,
-    pic_url:session.pic_url
-  });
+  if(req.query.status !== undefined && req.query.session !== null){
+    res.render(path.join(__dirname, "/views/index.html"), {
+      email: session.email,
+      name: session.name,
+      pic_url:session.pic_url,
+      status:req.query.status
+    });
+  }
+  else {
+    res.render(path.join(__dirname, "/views/index.html"), {
+      email: session.email,
+      name: session.name,
+      pic_url:session.pic_url
+    });
+  }
 });
 
 app.get("/",(req,res) => res.redirect("/main"));
@@ -95,6 +103,11 @@ app.get(
   })
 );
 
+app.get("/ssd/auth/google/loggout", (req,res) => {
+  req.logout();
+  req.session.passport = undefined;
+  res.redirect("/");
+})
 app.post("/ssd/file/upload", checkLogin, Drive.upload);
 
 app.listen(8000, () => {
