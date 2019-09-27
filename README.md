@@ -2,7 +2,8 @@
 
 ## Prerequisits
 
-..* NodeJS
+* NodeJS
+* npm
 
 ## Start Up
 
