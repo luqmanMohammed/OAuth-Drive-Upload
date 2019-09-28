@@ -6,14 +6,14 @@ const nunjucks = require("nunjucks");
 const fileupload = require("express-fileupload");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const Drive = require("./controllers/DriveController");
-
+const {PORT,CLIENT_ID,CLIENT_SECRET,CALLBACK_URL,CALLBACK_URL_ENDPOINT,COOKIE_SECRET} = require("./credintials");
 const app = express();
 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(
   cookie({
-    keys: ["secret"]
+    keys: [COOKIE_SECRET]
   })
 );
 app.use(
@@ -39,10 +39,9 @@ passport.deserializeUser((user, done) => {
 passport.use(
   new GoogleStrategy(
     {
-      clientID:
-        "282383424955-u83ib03o2c2bnfp0os9kk9pmqjtb7hrl.apps.googleusercontent.com",
-      clientSecret: "tncvRb4OpNjq2hRi-J7Lgago",
-      callbackURL: "http://localhost:8000/ssd/auth/google/callback"
+      clientID: CLIENT_ID,
+      clientSecret: CLIENT_SECRET,
+      callbackURL: CALLBACK_URL,
     },
     (accessToken, refreshToken, profile, done) => {
       const user = {
@@ -96,7 +95,7 @@ app.get(
 );
 
 app.get(
-  "/ssd/auth/google/callback",
+  CALLBACK_URL_ENDPOINT,
   passport.authenticate("google", {
     successRedirect: "/main",
     failureRedirect: "/login"
@@ -110,7 +109,7 @@ app.get("/ssd/auth/google/loggout", (req,res) => {
 })
 app.post("/ssd/file/upload", checkLogin, Drive.upload);
 
-app.listen(8000, () => {
+app.listen(PORT, () => {
     console.log("Server Started");
   });
   
