@@ -34,7 +34,7 @@ Run `make all`
 
 ### Run as a container
 
-Run `docker run --env-file="./config.env" -d -p 8000:8000 luqman077/oauth-node:0.2a`
+Run `docker run --env-file="./config.env" -d -p 8000:8000 luqman077/oauth-node:v0.2a`
 or
 Run `make pull_run`
 

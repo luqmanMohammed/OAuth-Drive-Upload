@@ -24,4 +24,4 @@ build_container: ## Edit docker file and build
 
 pull_run: ## Pull and run container
 	@echo "Pulling and Running container"
-	@docker run --env-file="./config.env" -d -p 8000:8000 luqman077/oauth-node:0.2a
+	@docker run --env-file="./config.env" -d -p 8000:8000 luqman077/oauth-node:v0.2a
