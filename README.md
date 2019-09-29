@@ -40,7 +40,7 @@ Run `make pull_run`
 
 ## NOTE
 
-ClientID, Client Key and Callback URL provided is short lived. In the case the application dint work, Follow the steps below
+Provided credintials ClientID, Client Key and Callback URL are short lived. In the case the application dint work, Follow the steps below.
 
 1. Create Project in Google Console
 2. Enable Drive
