@@ -7,6 +7,8 @@ const env = {
     COOKIE_SECRET : "very_secret",
 }
 
+console.log(env);
+
 const callbackArr = env.CALLBACK_URL.split("/");
 let callbackendpoint = callbackArr.reduce((pre,cur,index)=>{
     if(index < 3)

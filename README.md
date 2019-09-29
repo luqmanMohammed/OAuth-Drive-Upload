@@ -5,24 +5,50 @@
 * NodeJS
 * npm
 
+## Dependencies
+```javascript
+{
+    "cookie-session": "^1.3.3",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6-alpha.5",
+    "googleapis": "^43.0.0",
+    "nunjucks": "^3.2.0",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^2.0.0"
+}
+```
 ## Start Up
 
-### If `Makefile` support is availabe
-
-Run make `make all` command
-
-Will install dependencies and starup production server in port 8000
-
-### If a docker environment
-
-Run `docker run luqman077/gdrive-uploader -p 8000:8000` command
-
-Will run the application as a container
-
-### Normal Env
+### Normal Start up
 
 Follow the steps below
+
 1. `cd` into the directory
 2. `npm install`
 3. `npm start`
 
+### Makefile
+
+Run `make help` if you require any assistance
+Run `make all`
+
+### Run as a container
+
+Run `docker run --env-file="./config.env" -d -p 8000:8000 luqman077/oauth-node:0.2a`
+or
+Run `make pull_run`
+
+## NOTE
+
+ClientID, Client Key and Callback URL provided is short lived. In the case the application dint work, Follow the steps below
+
+1. Create Project in Google Console
+2. Enable Drive
+3. Allow the following scopes
+   - profile
+   - email
+   - "https://www.googleapis.com/auth/drive.file"
+
+4. Collect your clientID, clientKey and callback URL and export as Environment Variables.
+   Edit the config.env file and use either `source config.sh` command or use `make run_prod` to run the server.
+5. Run the App.
